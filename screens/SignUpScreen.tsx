@@ -42,16 +42,16 @@ const SignUpScreen: React.FC<StackScreenProps<any>> = ({ navigation }) => {
           containerStyle={styles.control}
           value={value.email}
           onChangeText={(text) => setValue({ ...value, email: text })}
-          leftIcon={<Icon name='envelope' size={16} />}
-        />
+          leftIcon={<Icon name='envelope' size={16} />} 
+          autoCompleteType={undefined}        />
         <Input
           placeholder="Password"
           containerStyle={styles.control}
           value={value.password}
           onChangeText={(text) => setValue({ ...value, password: text })}
           leftIcon={<Icon name='key' size={16} />}
-          secureTextEntry={true}
-        />
+          secureTextEntry={true} 
+          autoCompleteType={undefined}        />
         <Button title="Sign up" buttonStyle={styles.control} onPress={signUp} />
       </View>
     </View>
