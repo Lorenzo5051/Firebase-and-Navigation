@@ -1,27 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { getAuth, onAuthStateChanged, User} from "firebase/auth";
+import { Auth, getAuth, onAuthStateChanged, User } from "firebase/auth";
 
-const auth = getAuth();
+const auth: Auth = getAuth();
 
-export function userAuthentication(){
-    const [ user, setUser ] = useState<User>();
+export function useAuthentication() {
+  const [ user, setUser ] = useState<User>();
 
-    useEffect(() => {
-        const unsubscribeFromAuthStateChanged = onAuthStateChanged(auth,(user) => {
-            if (user){
-                // Usuario esta autenticado
-                setUser(user);
-            }else {
-                // Usuario no esta autenticado
-                setUser(undefined);
-            }
-        });
+  useEffect(() => {
+    const unsubscribeFromAuthStateChanged = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // Usuario está autenticado
+        setUser(user);
+      } else {
+        // Usuario no está autenticado
+        setUser(undefined);
+      }
+    });
 
-        return unsubscribeFromAuthStateChanged;
-    },  []);
+    return unsubscribeFromAuthStateChanged;
+  }, []);
 
-    return  {user};
+  return { user };
 }
-
-
- 
